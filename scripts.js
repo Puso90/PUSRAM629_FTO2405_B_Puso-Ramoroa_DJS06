@@ -107,9 +107,9 @@ console.log(nameAndProvince);
 
   
   // 3.  Filter out products without prices
-const validProducts = products.filter(product => product.price);
+const withoutPrice = products.filter(product => product.price);
 
-const totalPrice = validProducts.reduce((total, product) => {
+const totalPrice = withoutPrice.reduce((total, product) => {
   return total + Number(product.price);
 }, 0);
 
@@ -119,14 +119,31 @@ console.log(totalPrice);
 console.log(" ") // FOR SPACE IN BETWEEN
 
 
-// Concatenate all product names into a single string
-const concatenatedNames = products.reduce((accumulator, product) => {
-  return accumulator + product.name + ', ';
-}, '');
+// 4.  Concatenate all product names into a single string
+const concatenatedProducts = products.reduce((accumulator, current) => {
+  return accumulator + current.product + ', ';
+}, '').slice(0, -2); // Remove the last comma and space
+
+console.log(concatenatedProducts);
 
 
-// Removes the trailing comma and space
-const result = concatenatedNames.slice(0, -2);
+console.log(" ") // FOR SPACE IN BETWEEN
+
+
+// 5.  Finding Extremes
+const validProducts = products
+  .map(item => ({
+    product: item.product,
+    price: Number(item.price)
+  }))
+  .filter(item => !isNaN(item.price));
+
+// Find highest and lowest priced items
+const highest = validProducts.reduce((max, item) => item.price > max.price ? item : max);
+const lowest = validProducts.reduce((min, item) => item.price < min.price ? item : min);
+
+// Format the result
+const result = `Highest: ${highest.product} (R${highest.price}). Lowest: ${lowest.product} (R${lowest.price}).`;
 
 console.log(result);
 
@@ -134,6 +151,15 @@ console.log(result);
 console.log(" ") // FOR SPACE IN BETWEEN
 
 
+// 6.  Transform Objects
+const transformedProducts = products.reduce((acc, { product, price }) => {
+  // Use parseFloat to convert price to a number, handling empty strings and spaces
+  const cost = parseFloat(price) || null; // Assign null for invalid prices
+  acc.push({ name: product, cost });
+  return acc;
+}, []);
+
+console.log(transformedProducts);
 
 
 
