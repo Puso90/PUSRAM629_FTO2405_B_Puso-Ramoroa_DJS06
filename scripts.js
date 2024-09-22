@@ -40,7 +40,6 @@ const nameLengths = names.map(name => {
   container[name] = name.length;
   return container;
 });
-
 console.log(nameLengths);
 
     console.log(" "); // FOR SPACE IN BETWEEN 
@@ -58,7 +57,6 @@ const sortedProvinces = provinces.sort(
 // 5.  Fltered out all provinces with "Cape"
 let removeCape = sortedProvinces.filter(
   province => !province.includes("Cape"))
-
   console.log(removeCape);
   console.log(`Provinces left: ${removeCape.length}`);
 
@@ -73,8 +71,7 @@ const lookingForAss = names.map(name =>
 
   console.log(" ") // FOR SPACE IN BETWEEN 
 
-
-// Assuming the names and provinces arrays are of the same length
+//  Assuming the names and provinces arrays are of the same length
 const nameAndProvince = names.reduce((accumulator, name, index) => {
   accumulator[name] = provinces[index];
   return accumulator;
@@ -83,16 +80,75 @@ const nameAndProvince = names.reduce((accumulator, name, index) => {
 console.log(nameAndProvince);
 
 
-//6.  Finding "S"
+    console.log(" ") // FOR SPACE IN BETWEEN 
+
+
+
+  //_________________________________________________________________________________________
+  //_________________________________ADVANCED________________________________________________
+
+  // 1.  Logging each product name
+  products.forEach(index => {
+    console.log(index.product);
+  });
+
+
+  console.log(" ") // FOR SPACE IN BETWEEN
+
+
+  // 2.  Filter by name length
+  products.filter(index => {
+    if (index.product.length > 5)
+    console.log(index);
+  });
+
+
+  console.log(" ") // FOR SPACE IN BETWEEN
+
+  
+  // 3.  Filter out products without prices
+const validProducts = products.filter(product => product.price);
+
+const totalPrice = validProducts.reduce((total, product) => {
+  return total + Number(product.price);
+}, 0);
+
+console.log(totalPrice); 
+
+
+console.log(" ") // FOR SPACE IN BETWEEN
+
+
+// Concatenate all product names into a single string
+const concatenatedNames = products.reduce((accumulator, product) => {
+  return accumulator + product.name + ', ';
+}, '');
+
+
+// Removes the trailing comma and space
+const result = concatenatedNames.slice(0, -2);
+
+console.log(result);
+
+
+console.log(" ") // FOR SPACE IN BETWEEN
+
+
+
+
+
+
+
 
 /*
-1. *DONE*ForEach Basics**: Use `forEach` to log each name and each province to the console. Then, log each name with a matching province in the format "Name (Province)".
-2. *DONE*Uppercase Transformation**: Use `map` to create a new array of province names in all uppercase. Log the new array to the console.
-3. *DONE*Name Lengths**: Create a new array using `map` that contains the length of each name.
-4. *DONE*Sorting**: Use `sort` to alphabetically sort the provinces. 
-5. *DONE*Filtering Cape**: Use `filter` to remove provinces containing "Cape". Log the count of remaining provinces.
-6. *DONE*Finding 'S'**: Create a boolean array using `map` and `some` to determine if a name contains the letter 'S'.
-7. *DONE*Creating Object Mapping**: Use `reduce` to transform the names array into an object mapping names to their respective provinces.
+1. *DONE*Log Products**: Iterate over the products array, logging each product name.
+2. *DONE*Filter by Name Length**: Filter out products with names longer than 5 characters.
+3. *DONE*Price Manipulation**: Filter out products without prices, convert string prices to numbers, and calculate the total price using `reduce`.
+4. **Concatenate Product Names**: Use `reduce` to concatenate all product names into a single string.
+5. **Find Extremes in Prices**: Identify the highest and lowest-priced items, returning a string formatted as "Highest: X. Lowest: Y."
+6. **Object Transformation**: Using `Object.entries` and `reduce`, recreate the products object with keys 'name' and 'cost', maintaining their original values.
+
+
 
 TRIED & TESTED:
 
