@@ -14,16 +14,26 @@ const products = [
   { product: 'tea', price: '' },
 ]
 
-const array1 = [1, 4, 9, 16];
-const map1 = provinces.map(function(province){
+// 1. Old fashioned map() structure, could have used arrow => function
+const firstMap = provinces.map(function(province) {
    console.log(`Name of province: ${province}`);
    return ;
 });
 
+  console.log(" ") // FOR SPACE IN BETWEEN
+
+// 2. Uppercase Transformation
+const secondMap = provinces.map(function(province) {
+  console.log(`Name of province: ${province.toUpperCase()}`);
+  return ;
+});
+
+  
+
 
 /*
-1. **ForEach Basics**: Use `forEach` to log each name and each province to the console. Then, log each name with a matching province in the format "Name (Province)".
-2. **Uppercase Transformation**: Use `map` to create a new array of province names in all uppercase. Log the new array to the console.
+1. *DONE*ForEach Basics**: Use `forEach` to log each name and each province to the console. Then, log each name with a matching province in the format "Name (Province)".
+2. *DONE*Uppercase Transformation**: Use `map` to create a new array of province names in all uppercase. Log the new array to the console.
 3. **Name Lengths**: Create a new array using `map` that contains the length of each name.
 4. **Sorting**: Use `sort` to alphabetically sort the provinces. 
 5. **Filtering Cape**: Use `filter` to remove provinces containing "Cape". Log the count of remaining provinces.
