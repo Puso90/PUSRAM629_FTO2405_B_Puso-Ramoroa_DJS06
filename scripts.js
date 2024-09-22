@@ -1,5 +1,5 @@
 // A list of provinces:
-const provinces = ['Western Cape', 'Gauteng', 'Northern Cape', 'Eastern Cape', 'KwaZulu-Natal', 'Free State']
+const provinces = ['Tshwane', 'North West','Western Cape', 'Gauteng', 'Northern Cape', 'Eastern Cape', 'KwaZulu-Natal', 'Free State']
 
 // A list of names:
 const names = ['Ashwin', 'Sibongile', 'Jan-Hendrik', 'Sifso', 'Shailen', 'Frikkie']
@@ -62,14 +62,37 @@ let removeCape = sortedProvinces.filter(
   console.log(removeCape);
   console.log(`Provinces left: ${removeCape.length}`);
 
+
+  console.log(" ") // FOR SPACE IN BETWEEN 
+
+
+// 6.  Looks for the "S" letter in the names array
+const lookingForAss = names.map(name => 
+  name.toUpperCase().includes('S')) 
+  console.log(`Looking for letter "S": \n` + lookingForAss.join('   '));
+
+  console.log(" ") // FOR SPACE IN BETWEEN 
+
+
+// Assuming the names and provinces arrays are of the same length
+const nameAndProvince = names.reduce((accumulator, name, index) => {
+  accumulator[name] = provinces[index];
+  return accumulator;
+}, {});
+
+console.log(nameAndProvince);
+
+
+//6.  Finding "S"
+
 /*
 1. *DONE*ForEach Basics**: Use `forEach` to log each name and each province to the console. Then, log each name with a matching province in the format "Name (Province)".
 2. *DONE*Uppercase Transformation**: Use `map` to create a new array of province names in all uppercase. Log the new array to the console.
 3. *DONE*Name Lengths**: Create a new array using `map` that contains the length of each name.
 4. *DONE*Sorting**: Use `sort` to alphabetically sort the provinces. 
 5. *DONE*Filtering Cape**: Use `filter` to remove provinces containing "Cape". Log the count of remaining provinces.
-6. **Finding 'S'**: Create a boolean array using `map` and `some` to determine if a name contains the letter 'S'.
-7. **Creating Object Mapping**: Use `reduce` to transform the names array into an object mapping names to their respective provinces.
+6. *DONE*Finding 'S'**: Create a boolean array using `map` and `some` to determine if a name contains the letter 'S'.
+7. *DONE*Creating Object Mapping**: Use `reduce` to transform the names array into an object mapping names to their respective provinces.
 
 TRIED & TESTED:
 
